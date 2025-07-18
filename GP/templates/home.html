@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home - Academic Advisor</title>
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block title %}Home - Academic Advisor{% endblock %}
+    {% block content %}
+    <h1>Welcome to the Academic Advisor System</h1>
+    <p>Use the tools below to get course recommendations or ask questions about academic bylaws.</p>
+    <ul>
+        <li><a href="{{ url_for('recommendation.recommend') }}">Course Recommendation System</a></li>
+        <li><a href="{{ url_for('chatbot.chat') }}">Academic Chatbot</a></li>
+    </ul>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,12 @@
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Domain\bin\Release\net8.0\FCAI.Domain.deps.json
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Domain\bin\Release\net8.0\FCAI.Domain.dll
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Domain\bin\Release\net8.0\FCAI.Domain.pdb
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Domain\obj\Release\net8.0\FCAI.Domain.csproj.AssemblyReference.cache
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Domain\obj\Release\net8.0\FCAI.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Domain\obj\Release\net8.0\FCAI.Domain.AssemblyInfoInputs.cache
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Domain\obj\Release\net8.0\FCAI.Domain.AssemblyInfo.cs
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Domain\obj\Release\net8.0\FCAI.Domain.csproj.CoreCompileInputs.cache
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Domain\obj\Release\net8.0\FCAI.Domain.dll
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Domain\obj\Release\net8.0\refint\FCAI.Domain.dll
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Domain\obj\Release\net8.0\FCAI.Domain.pdb
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Domain\obj\Release\net8.0\ref\FCAI.Domain.dll

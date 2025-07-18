@@ -1,0 +1,2 @@
+workstation id=FCAI_DB.mssql.somee.com;packet size=4096;user id=Hazem011_SQLLogin_1;pwd=j9znh2zya3;data source=FCAI_DB.mssql.somee.com;persist security info=False;initial catalog=FCAI_DB;TrustServerCertificate=True
+Server = .; DataBase = FCAIDB; Trusted_Connection = true; TrustServerCertificate = true

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Recommendation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+    <h1>Course Recommendation</h1>
+
+    <!-- Form Section -->
+    <form method="POST">
+        <label for="student_id">Student ID:</label>
+        <input type="text" id="student_id" name="student_id" required><br>
+
+        <label for="gpa">GPA:</label>
+        <input type="number" step="0.01" id="gpa" name="gpa" required><br>
+
+        <label for="expected_to_graduate">Expected to Graduate:</label>
+        <select id="expected_to_graduate" name="expected_to_graduate">
+            <option value="True">Yes</option>
+            <option value="False">No</option>
+        </select><br>
+
+        <label for="semester">Semester:</label>
+        <select id="semester" name="semester">
+            <option value="regular">Regular</option>
+            <option value="summer">Summer</option>
+        </select><br>
+
+        <label for="term">Term:</label>
+        <select id="term" name="term">
+            <option value="First">First</option>
+            <option value="Second">Second</option>
+        </select><br>
+
+        <label for="department">Department:</label>
+        <input type="text" id="department" name="department" required><br>
+
+        <input type="submit" value="Get Recommendations">
+    </form>
+
+    <!-- Results Section -->
+    {% if result %}
+        <h2>Student Academic Summary</h2>
+        <p>Student ID: {{ result.student_summary.student_id }}</p>
+        <p>Academic Level: {{ result.student_summary.academic_level }}</p>
+        <p>Current Term: {{ result.student_summary.current_term }}</p>
+        <p>GPA: {{ result.student_summary.gpa }}</p>
+        <p>Department: {{ result.student_summary.department }}</p>
+        <p>Total Completed Credit Hours: {{ result.student_summary.total_completed_hours }}</p>
+        <p>Total Remaining Credit Hours: {{ result.student_summary.total_remaining }}</p>
+        <p>Maximum Allowed Credit Hours for Next Term: {{ result.student_summary.credit_limit }}</p>
+
+        <h2>Core Course Recommendations</h2>
+        {% if result.core_courses %}
+            <ul>
+                {% for course in result.core_courses %}
+                    <li>{{ course.course_name }} ({{ course.credit_hours }} credits)</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No core courses recommended based on eligibility and constraints.</p>
+        {% endif %}
+
+        <h2>General Elective Recommendations</h2>
+        {% if result.electives.General > 0 %}
+            {% if result.electives.GeneralOptions %}
+                <p>You may choose up to {{ result.electives.General }} general elective(s) from the following:</p>
+                <ul>
+                    {% for course in result.electives.GeneralOptions %}
+                        <li>{{ course.course_name }} ({{ course.credit_hours }} credits)</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Eligible credit slots available, but no matching general electives found.</p>
+            {% endif %}
+        {% else %}
+            <p>No credit space available for general electives this term.</p>
+        {% endif %}
+
+        <h2>Applied Sciences Elective Recommendations</h2>
+        {% if result.electives.Applied > 0 %}
+            {% if result.electives.AppliedOptions %}
+                <h2>Inside Department Electives</h2>
+                <p>Inside Department Applied Electives (up to {{ result.electives.Applied }} allowed) for current term:</p>
+                <ul>
+                    {% for course in result.electives.AppliedOptions %}
+                        <li>{{ course.course_name }} ({{ course.credit_hours }} credits)</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Credit space available, but no eligible applied electives found within the department.</p>
+            {% endif %}
+        {% else %}
+            <p>No credit space available for applied electives within the department this term.</p>
+        {% endif %}
+
+        <h2>Outside Department Electives</h2>
+        <p>Outside Department Electives (Max 2 allowed, you’ve completed {{ result.outside_dept.num_outside_dept_taken }}).</p>
+        {% if result.outside_dept.can_take_outside > 0 %}
+            {% if result.outside_dept.available_outside %}
+                <p>You may choose up to {{ result.outside_dept.can_take_outside }} elective(s) from other departments this term:</p>
+                <ul>
+                    {% for course in result.outside_dept.available_outside %}
+                        <li>{{ course.course_name }} ({{ course.code }}, {{ course.credit_hours }} credits)</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No eligible outside-department electives available for this term.</p>
+            {% endif %}
+        {% else %}
+            <p>You have already completed the maximum number of outside department electives.</p>
+        {% endif %}
+
+        <h2>Remaining Distribution Requirements</h2>
+        <ul>
+            {% for category, status in result.remaining_requirements.items() %}
+                <li>{{ category }}: {{ status }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Important Notes</h2>
+        {% if result.ineligible_courses %}
+            <p>You have remaining mandatory courses that you are not yet eligible for:</p>
+            <ul>
+                {% for course in result.ineligible_courses %}
+                    <li>{{ course.course_name }}: Missing prerequisites: {{ course.missing_prereqs }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>You are eligible for all remaining mandatory courses.</p>
+        {% endif %}
+    {% endif %}
+
+    {% endblock %}
+</body>
+</html>

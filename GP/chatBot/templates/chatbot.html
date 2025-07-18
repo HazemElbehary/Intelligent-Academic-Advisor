@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Academic Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+    <h1>Academic Chatbot</h1>
+    <p>Ask questions about faculty bylaws, academic policies, or course requirements.</p>
+
+    <!-- Chat Interface -->
+    <div id="chat-container">
+        <div id="chat-history">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="message {{ message.role }}">
+                        <strong>{{ message.role.capitalize() }}:</strong> {{ message.content }}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="message system">Welcome! How can I assist you with academic policies or bylaws?</div>
+            {% endif %}
+        </div>
+        <form id="chat-form" method="POST" action="{{ url_for('chatbot.chat') }}">
+            <input type="text" id="user-input" name="query" placeholder="Type your question..." required>
+            <button type="submit" id="send-btn">Send</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('chat-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const userInput = document.getElementById('user-input');
+            const sendBtn = document.getElementById('send-btn');
+            const chatHistory = document.getElementById('chat-history');
+            const query = userInput.value.trim();
+            
+            if (!query) return;
+            
+            // Disable input and button
+            userInput.disabled = true;
+            sendBtn.disabled = true;
+            sendBtn.textContent = 'Sending...';
+            
+            // Show user message
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message user';
+            userMessage.innerHTML = `<strong>User:</strong> ${query}`;
+            chatHistory.appendChild(userMessage);
+            
+            // Show loading message
+            const loadingMessage = document.createElement('div');
+            loadingMessage.className = 'message bot loading';
+            loadingMessage.innerHTML = '<strong>Bot:</strong> 🤔 Thinking...';
+            chatHistory.appendChild(loadingMessage);
+            
+            // Scroll to bottom
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+            
+            // Send request
+            fetch('/chatbot/api/ask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ question: query })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Remove loading message
+                const loadingMsg = chatHistory.querySelector('.loading');
+                if (loadingMsg) {
+                    loadingMsg.remove();
+                }
+                
+                // Show bot response
+                const botMessage = document.createElement('div');
+                botMessage.className = 'message bot';
+                botMessage.innerHTML = `<strong>Bot:</strong> ${data.answer}`;
+                chatHistory.appendChild(botMessage);
+                
+                // Re-enable input and button
+                userInput.disabled = false;
+                sendBtn.disabled = false;
+                sendBtn.textContent = 'Send';
+                userInput.value = '';
+                userInput.focus();
+                
+                // Scroll to bottom
+                chatHistory.scrollTop = chatHistory.scrollHeight;
+            })
+            .catch(error => {
+                // Remove loading message
+                const loadingMsg = chatHistory.querySelector('.loading');
+                if (loadingMsg) {
+                    loadingMsg.remove();
+                }
+                
+                // Show error message
+                const errorMessage = document.createElement('div');
+                errorMessage.className = 'message bot error';
+                errorMessage.innerHTML = `<strong>Bot:</strong> ❌ Error: ${error.message}`;
+                chatHistory.appendChild(errorMessage);
+                
+                // Re-enable input and button
+                userInput.disabled = false;
+                sendBtn.disabled = false;
+                sendBtn.textContent = 'Send';
+                
+                // Scroll to bottom
+                chatHistory.scrollTop = chatHistory.scrollHeight;
+            });
+        });
+    </script>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% endblock %}
+</body>
+</html>

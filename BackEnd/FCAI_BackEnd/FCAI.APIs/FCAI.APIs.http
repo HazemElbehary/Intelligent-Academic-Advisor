@@ -1,0 +1,6 @@
+@FCAI.APIs_HostAddress = http://localhost:5108
+
+GET {{FCAI.APIs_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

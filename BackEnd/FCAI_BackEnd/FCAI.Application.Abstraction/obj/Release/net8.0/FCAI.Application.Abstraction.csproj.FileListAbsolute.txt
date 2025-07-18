@@ -1,0 +1,15 @@
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Application.Abstraction\bin\Release\net8.0\FCAI.Application.Abstraction.deps.json
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Application.Abstraction\bin\Release\net8.0\FCAI.Application.Abstraction.dll
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Application.Abstraction\bin\Release\net8.0\FCAI.Application.Abstraction.pdb
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Application.Abstraction\bin\Release\net8.0\FCAI.Domain.dll
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Application.Abstraction\bin\Release\net8.0\FCAI.Domain.pdb
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Application.Abstraction\obj\Release\net8.0\FCAI.Application.Abstraction.csproj.AssemblyReference.cache
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Application.Abstraction\obj\Release\net8.0\FCAI.Application.Abstraction.GeneratedMSBuildEditorConfig.editorconfig
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Application.Abstraction\obj\Release\net8.0\FCAI.Application.Abstraction.AssemblyInfoInputs.cache
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Application.Abstraction\obj\Release\net8.0\FCAI.Application.Abstraction.AssemblyInfo.cs
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Application.Abstraction\obj\Release\net8.0\FCAI.Application.Abstraction.csproj.CoreCompileInputs.cache
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Application.Abstraction\obj\Release\net8.0\FCAI.App.5CC95174.Up2Date
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Application.Abstraction\obj\Release\net8.0\FCAI.Application.Abstraction.dll
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Application.Abstraction\obj\Release\net8.0\refint\FCAI.Application.Abstraction.dll
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Application.Abstraction\obj\Release\net8.0\FCAI.Application.Abstraction.pdb
+D:\unversity\Graduation Project\Implementation\BackEnd\FCAI_BackEnd\FCAI.Application.Abstraction\obj\Release\net8.0\ref\FCAI.Application.Abstraction.dll

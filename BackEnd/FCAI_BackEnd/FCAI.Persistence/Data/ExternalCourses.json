@@ -1,0 +1,176 @@
+[
+    {"Code": "1", "Name": "Technical Report Writing", "CreditHours": 2, "Description": null, "UniversityID": 2, "EquivalentCourseCode": "HU111"},
+    {"Code": "2", "Name": "English Language-2", "CreditHours": 2, "Description": null, "UniversityID": 3, "EquivalentCourseCode": "HU111"},
+    {"Code": "3", "Name": "Specialized English Language", "CreditHours": 2, "Description": null, "UniversityID": 4, "EquivalentCourseCode": "HU111"},
+    {"Code": "4", "Name": "Technical Report Writing", "CreditHours": 2, "Description": null, "UniversityID": 5, "EquivalentCourseCode": "HU111"},
+    {"Code": "5", "Name": "English Language-2", "CreditHours": 2, "Description": null, "UniversityID": 7, "EquivalentCourseCode": "HU111"},
+    {"Code": "6", "Name": "English Language-2", "CreditHours": 2, "Description": null, "UniversityID": 9, "EquivalentCourseCode": "HU111"},
+    {"Code": "7", "Name": "Technical Report Writing", "CreditHours": 2, "Description": null, "UniversityID": 8, "EquivalentCourseCode": "HU111"},
+
+
+
+    {"Code": "8", "Name": "Human Rights", "CreditHours": 2, "Description": null, "UniversityID": 2, "EquivalentCourseCode": "HU117"},
+    {"Code": "9", "Name": "Social Issues", "CreditHours": 2, "Description": null, "UniversityID": 5, "EquivalentCourseCode": "HU117"},
+    {"Code": "10", "Name": "Social Issues", "CreditHours": 2, "Description": null, "UniversityID": 6, "EquivalentCourseCode": "HU117"},
+    {"Code": "11", "Name": "Social Issues", "CreditHours": 2, "Description": null, "UniversityID": 8, "EquivalentCourseCode": "HU117"},
+    {"Code": "12", "Name": "Human Rights", "CreditHours": 2, "Description": null, "UniversityID": 3, "EquivalentCourseCode": "HU117"},
+    {"Code": "13", "Name": "Human Rights", "CreditHours": 2, "Description": null, "UniversityID": 4, "EquivalentCourseCode": "HU117"},
+
+
+    
+    
+    {"Code": "14", "Name": "Mathematics-1", "CreditHours": 3, "Description": null, "UniversityID": 2, "EquivalentCourseCode": "MA111"},
+    {"Code": "15", "Name": "Mathematics-1", "CreditHours": 3, "Description": null, "UniversityID": 5, "EquivalentCourseCode": "MA111"},
+    {"Code": "16", "Name": "Mathematics-1", "CreditHours": 3, "Description": null, "UniversityID": 3, "EquivalentCourseCode": "MA111"},
+    {"Code": "17", "Name": "Mathematics-1", "CreditHours": 3, "Description": null, "UniversityID": 6, "EquivalentCourseCode": "MA111"},
+    {"Code": "18", "Name": "Mathematics-1", "CreditHours": 3, "Description": null, "UniversityID": 7, "EquivalentCourseCode": "MA111"},
+    {"Code": "19","Name": "Mathematics-1", "CreditHours": 3, "Description": null, "UniversityID": 9, "EquivalentCourseCode": "MA111"},
+    {"Code": "20","Name": "Mathematics-1", "CreditHours": 3, "Description": null, "UniversityID": 11, "EquivalentCourseCode": "MA111"},
+    {"Code": "21","Name": "Calculus-1", "CreditHours": 3, "Description": null, "UniversityID": 10, "EquivalentCourseCode": "MA111"},
+    {"Code": "22","Name": "Calculus", "CreditHours": 3, "Description": null, "UniversityID": 4, "EquivalentCourseCode": "MA111"},
+    {"Code": "23","Name": "Calculus", "CreditHours": 3, "Description": null, "UniversityID": 8, "EquivalentCourseCode": "MA111"},
+
+
+
+    
+    {"Code": "24","Name": "Discrete Mathematics", "CreditHours": 3, "Description": null, "UniversityID": 2, "EquivalentCourseCode": "MA112"},
+    {"Code": "25","Name": "Discrete Mathematics", "CreditHours": 3, "Description": null, "UniversityID": 8, "EquivalentCourseCode": "MA112"},
+    {"Code": "26","Name": "Discrete structures", "CreditHours": 3, "Description": null, "UniversityID": 4, "EquivalentCourseCode": "MA112"},
+    {"Code": "27","Name": "Specific Structures", "CreditHours": 3, "Description": null, "UniversityID": 5, "EquivalentCourseCode": "MA112"},
+
+
+
+    {"Code": "28", "Name": "Electronics-1", "CreditHours": 3, "Description": null, "UniversityID": 2, "EquivalentCourseCode":"IT111"},
+    {"Code": "29", "Name": "Electrical and electronic circuits", "CreditHours": 3, "Description": null, "UniversityID": 6, "EquivalentCourseCode":"IT111"},
+    {"Code": "30", "Name": "Electronics", "CreditHours": 3, "Description": null, "UniversityID": 3, "EquivalentCourseCode":"IT111"},
+    {"Code": "31", "Name": "Electronics", "CreditHours": 3, "Description": null, "UniversityID": 11, "EquivalentCourseCode":"IT111"},
+    {"Code": "32", "Name": "Electronics", "CreditHours": 3, "Description": null, "UniversityID": 5, "EquivalentCourseCode":"IT111"},
+    {"Code": "33", "Name": "Electronics", "CreditHours": 3, "Description": null, "UniversityID": 7, "EquivalentCourseCode":"IT111"},
+    {"Code": "34", "Name": "Electronics", "CreditHours": 3, "Description": null, "UniversityID": 8, "EquivalentCourseCode":"IT111"},
+    {"Code": "35", "Name": "Electronics", "CreditHours": 3, "Description": null, "UniversityID": 9, "EquivalentCourseCode":"IT111"},
+    {"Code": "36", "Name": "Electronics", "CreditHours": 3, "Description": null, "UniversityID": 10, "EquivalentCourseCode":"IT111"},
+
+
+
+
+
+
+    {"Code":"37", "Name": "Fundamentals of Computer Science", "CreditHours": 3, "Description": null, "UniversityID": 2, "EquivalentCourseCode":"CS111"},
+    {"Code": "38", "Name": "Fundamentals of Computer Science", "CreditHours": 3, "Description": null, "UniversityID": 5, "EquivalentCourseCode":"CS111"},
+    {"Code": "39", "Name": "Fundamentals of Computer Science", "CreditHours": 3, "Description": null, "UniversityID": 8, "EquivalentCourseCode":"CS111"},
+    {"Code": "40", "Name": "Introduction of Computer Science", "CreditHours": 3, "Description": null, "UniversityID": 4, "EquivalentCourseCode":"CS111"},
+    {"Code": "41", "Name": "Introduction of Computer Science", "CreditHours": 3, "Description": null, "UniversityID": 6, "EquivalentCourseCode":"CS111"},
+    {"Code": "42", "Name": "Introduction of Computer Science", "CreditHours": 3, "Description": null, "UniversityID": 11, "EquivalentCourseCode":"CS111"},
+    {"Code": "43", "Name": "Introduction of Computer Science", "CreditHours": 3, "Description": null, "UniversityID": 10, "EquivalentCourseCode":"CS111"},
+    {"Code": "44", "Name": "fundamentals of Information Technology", "CreditHours": 3, "Description": null, "UniversityID": 3, "EquivalentCourseCode":"CS111"},
+    {"Code": "45", "Name": "fundamentals of Information Technology", "CreditHours": 3, "Description": null, "UniversityID": 7, "EquivalentCourseCode":"CS111"},
+    {"Code": "46", "Name": "fundamentals of Information Technology", "CreditHours": 3, "Description": null, "UniversityID": 9, "EquivalentCourseCode":"CS111"},
+   
+   
+   
+    
+    {"Code": "47", "Name": "Critical Thinking", "CreditHours": 0, "Description": null, "UniversityID": 2, "EquivalentCourseCode": "HU124"},
+    {"Code": "48", "Name": " Scientific Thinking", "CreditHours": 0, "Description": null, "UniversityID": 3, "EquivalentCourseCode": "HU124"},
+
+
+
+
+
+    
+    {"Code": "49", "Name": "Fundamentals of Management", "CreditHours": 2, "Description": null, "UniversityID": 2, "EquivalentCourseCode": "DS251"},
+    {"Code": "50", "Name": "Business Administration", "CreditHours": 2, "Description": null, "UniversityID": 10, "EquivalentCourseCode": "DS251"},
+
+
+
+
+    
+    {"Code": "51", "Name": "Mathematics-2", "CreditHours": 3, "Description": null, "UniversityID": 2, "EquivalentCourseCode": "MA112"},
+    {"Code": "52", "Name": "Mathematics-2", "CreditHours": 3, "Description": null, "UniversityID": 3, "EquivalentCourseCode": "MA112"},
+    {"Code": "53", "Name": "Mathematics-2", "CreditHours": 3, "Description": null, "UniversityID": 6, "EquivalentCourseCode": "MA112"},
+    {"Code": "54", "Name": "Mathematics-2", "CreditHours": 3, "Description": null, "UniversityID": 7, "EquivalentCourseCode": "MA112"},
+    {"Code": "55", "Name": "Mathematics-2", "CreditHours": 3, "Description": null, "UniversityID": 9, "EquivalentCourseCode": "MA112"},
+    {"Code": "56", "Name": "Calculus-2", "CreditHours": 3, "Description": null, "UniversityID": 10, "EquivalentCourseCode": "MA112"},
+   
+
+
+
+
+    {"Code": "57", "Name": "Probability and Statistics-1", "CreditHours": 3, "Description": null, "UniversityID": 2, "EquivalentCourseCode": "ST121"},
+    {"Code": "58", "Name": "Probability and Statistics-1", "CreditHours": 3, "Description": null, "UniversityID": 4, "EquivalentCourseCode": "ST121"},
+    {"Code": "59", "Name": "Probability and Statistics-1", "CreditHours": 3, "Description": null, "UniversityID": 5, "EquivalentCourseCode": "ST121"},
+    {"Code": "60", "Name": "Probability and Statistics-1", "CreditHours": 3, "Description": null, "UniversityID": 8, "EquivalentCourseCode": "ST121"},
+
+
+
+
+    
+    {"Code": "61", "Name": "Logic Design", "CreditHours": 3, "Description": null, "UniversityID": 2, "EquivalentCourseCode": "IT212"},
+    {"Code": "62", "Name": "Logic Design", "CreditHours": 3, "Description": null, "UniversityID": 4, "EquivalentCourseCode": "IT212"},
+    {"Code": "63", "Name": "Logic Design", "CreditHours": 3, "Description": null, "UniversityID": 6, "EquivalentCourseCode": "IT212"},
+    {"Code": "64", "Name": "Logic Design", "CreditHours": 3, "Description": null, "UniversityID": 11, "EquivalentCourseCode": "IT212"},
+    {"Code": "65", "Name": "Digital Circuits 2020", "CreditHours": 3, "Description": null, "UniversityID": 7, "EquivalentCourseCode": "IT212"},
+
+
+
+
+   
+    {"Code": "66", "Name": "Structured Programming", "CreditHours": 3, "Description": null, "UniversityID": 2, "EquivalentCourseCode": "CS112"},
+    {"Code": "67", "Name": "Structured Programming", "CreditHours": 3, "Description": null, "UniversityID": 5, "EquivalentCourseCode": "CS112"},
+    {"Code": "68", "Name": "Structured Programming", "CreditHours": 3, "Description": null, "UniversityID": 8, "EquivalentCourseCode": "CS112"},
+    {"Code": "69", "Name": "Fundamentals of Programming", "CreditHours": 3, "Description": null, "UniversityID": 3, "EquivalentCourseCode": "CS112"},
+    {"Code": "70", "Name": "Fundamentals of Programming", "CreditHours": 3, "Description": null, "UniversityID": 9, "EquivalentCourseCode": "CS112"},
+    {"Code": "71", "Name": "Principles of Programming", "CreditHours": 3, "Description": null, "UniversityID": 4, "EquivalentCourseCode": "CS112"},
+    {"Code": "72", "Name": "Programming Language-1", "CreditHours": 3, "Description": null, "UniversityID": 7, "EquivalentCourseCode": "CS112"},
+    {"Code": "73", "Name": "Introduction to Programming", "CreditHours": 3, "Description": null, "UniversityID": 6, "EquivalentCourseCode": "CS112"},
+    {"Code": "74", "Name": "Programming-1", "CreditHours": 3, "Description": null, "UniversityID": 11, "EquivalentCourseCode": "CS112"},
+    
+    
+    
+
+    {"Code": "78", "Name": "Selected Topics in Humanities", "CreditHours": 2, "Description": null, "UniversityID": 2, "EquivalentCourseCode": "HU118"},
+    {"Code": "79", "Name": "Selected Topics in Humanities", "CreditHours": 2, "Description": null, "UniversityID": 5, "EquivalentCourseCode": "HU118"},
+    {"Code": "80", "Name": "Hand Drawing", "CreditHours": 2, "Description": null, "UniversityID": 9, "EquivalentCourseCode": "HU118"},
+
+
+
+
+
+
+
+
+    {"Code": "86", "Name": "Entrepreneurship", "CreditHours": 3, "Description": null, "UniversityID": 2, "EquivalentCourseCode": "HU225"},
+
+
+
+
+    {"Code": "87", "Name": "Principles of Economics", "CreditHours": 3, "Description": null, "UniversityID": 2, "EquivalentCourseCode": "HU121"},
+
+    {"Code": "88", "Name": "Computing Economics", "CreditHours": 3, "Description": null, "UniversityID": 11, "EquivalentCourseCode": "HU121"},
+    {"Code": "89", "Name": "Computing Economics", "CreditHours": 3, "Description": null, "UniversityID": 3, "EquivalentCourseCode": "HU121"},
+    {"Code": "90", "Name": "Computing Economics", "CreditHours": 3, "Description": null, "UniversityID": 6, "EquivalentCourseCode": "HU121"},
+
+
+
+
+    {"Code": "91", "Name": "Mathematics-3", "CreditHours": 3, "Description": null, "UniversityID": 2, "EquivalentCourseCode": "MA214"},
+    
+
+    
+    {"Code": "92", "Name": "Object-Oriented Programming", "CreditHours": 3, "Description": null, "UniversityID": 2, "EquivalentCourseCode": "CS213"},
+    {"Code": "93", "Name": "Object-Oriented Programming", "CreditHours": 3, "Description": null, "UniversityID": 8, "EquivalentCourseCode": "CS213"},
+    {"Code": "94", "Name": "Programming_2", "CreditHours": 3, "Description": null, "UniversityID": 4, "EquivalentCourseCode": "CS213"},
+
+
+
+
+    
+    {"Code": "95", "Name": "Fundamentals of Software Engineering", "CreditHours": 3, "Description": null, "UniversityID": 2, "EquivalentCourseCode": "CS111"},
+
+
+
+    {"Code": "96", "Name": "Data Communication", "CreditHours": 3, "Description": null, "UniversityID": 2, "EquivalentCourseCode": "IT331"},
+
+
+
+    {"Code": "97", "Name": "Project Management", "CreditHours": 3, "Description": null, "UniversityID": 2, "EquivalentCourseCode": "DS456"}
+]
