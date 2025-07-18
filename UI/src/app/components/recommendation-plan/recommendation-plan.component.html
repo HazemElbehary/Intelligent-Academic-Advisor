@@ -1,0 +1,153 @@
+<div *ngIf="loading" class="d-flex justify-content-center align-items-center min-vh-100">
+  <p class="fs-4 text-primary">Please wait, we are processing your recommendation plan...</p>
+</div>
+<div *ngIf="!loading && recommendationPlan as result" class="container py-4">
+  <div class="row mb-4">
+    <div class="col-12">
+      <p-card styleClass="shadow">
+        <ng-template pTemplate="title">
+          <h2 class="fw-bold text-primary mb-0">Student Academic Summary</h2>
+        </ng-template>
+        <div class="row g-3 mt-2">
+          <div class="col-md-4 col-6"><strong>Student ID:</strong> {{ result.student_summary.StudentId }}</div>
+          <div class="col-md-4 col-6"><strong>Academic Level:</strong> {{ result.student_summary.AcademicLevel }}</div>
+          <div class="col-md-4 col-6"><strong>Current Term:</strong> {{ result.student_summary.CurrentTerm }}</div>
+          <div class="col-md-4 col-6"><strong>GPA:</strong> {{ result.student_summary.Gpa }}</div>
+          <div class="col-md-4 col-6"><strong>Department:</strong> {{ result.student_summary.Department }}</div>
+          <div class="col-md-4 col-6"><strong>Completed Credit Hours:</strong> {{ result.student_summary.TotalCompletedHours }}</div>
+          <div class="col-md-4 col-6"><strong>Remaining Credit Hours:</strong> {{ result.student_summary.TotalRemaining }}</div>
+          <div class="col-md-4 col-6"><strong>Max Credit Hours Next Term:</strong> {{ result.student_summary.CreditLimit }}</div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-md-6" *ngIf="result.CoreCourses && result.CoreCourses.length > 0">
+      <p-card styleClass="shadow-sm">
+        <ng-template pTemplate="title">
+          <h4 class="text-success mb-0">Core Course Recommendations</h4>
+        </ng-template>
+        <ul class="list-group list-group-flush mt-2">
+          <li *ngFor="let course of result.CoreCourses" class="list-group-item">
+            <i class="pi pi-book text-primary me-2"></i>{{ course }}
+          </li>
+        </ul>
+      </p-card>
+    </div>
+
+    <div class="col-md-6" *ngIf="result.Electives.GeneralOptions.length > 0">
+      <p-card styleClass="shadow-sm">
+        <ng-template pTemplate="title">
+          <h4 class="text-info mb-0">General Elective Recommendations</h4>
+        </ng-template>
+        <ng-container *ngIf="result.Electives.GeneralOptions.length > 0">
+          <ng-container *ngIf="result.Electives.GeneralOptions?.length; else noGeneralOptions">
+            <p class="mt-2">You may choose up to <strong>{{ result.Electives.General }}</strong> general elective(s):</p>
+            <ul class="list-group list-group-flush">
+              <li *ngFor="let course of result.Electives.GeneralOptions" class="list-group-item">
+                <i class="pi pi-bookmark text-info me-2"></i>{{ course }}
+              </li>
+            </ul>
+          </ng-container>
+          <ng-template #noGeneralOptions>
+            <p class="text-warning">Eligible credit slots available, but no matching general electives found.</p>
+          </ng-template>
+        </ng-container>
+        <ng-container *ngIf="result.Electives.GeneralOptions.length === 0">
+          <p class="text-muted">No credit space available for general electives this term.</p>
+        </ng-container>
+      </p-card>
+    </div>
+
+    <div class="col-md-6" *ngIf="result.Electives.AppliedOptions && result.Electives.AppliedOptions.length > 0">
+      <p-card styleClass="shadow-sm">
+        <ng-template pTemplate="title">
+          <h4 class="text-warning mb-0">Applied Sciences Elective Recommendations</h4>
+        </ng-template>
+        <ng-container *ngIf="result.Electives.AppliedOptions.length > 0">
+          <ng-container *ngIf="result.Electives.AppliedOptions?.length; else noAppliedOptions">
+            <p class="mt-2">Inside Department Applied Electives (up to <strong>{{ result.Electives.Applied }}</strong> allowed):</p>
+            <ul class="list-group list-group-flush">
+              <li *ngFor="let course of result.Electives.AppliedOptions" class="list-group-item">
+                <i class="pi pi-cog text-warning me-2"></i>{{ course }}
+              </li>
+            </ul>
+          </ng-container>
+          <ng-template #noAppliedOptions>
+            <p class="text-warning">Credit space available, but no eligible applied electives found within the department.</p>
+          </ng-template>
+        </ng-container>
+        <ng-container *ngIf="!result.Electives.AppliedOptions || result.Electives.AppliedOptions.length === 0">
+          <p class="text-muted">No credit space available for applied electives within the department this term.</p>
+        </ng-container>
+      </p-card>
+    </div>
+
+    <div class="col-md-6" *ngIf="result.OutsideDept.AvailableOutside">
+      <p-card styleClass="shadow-sm">
+        <ng-template pTemplate="title">
+          <h4 class="text-secondary mb-0">Outside Department Electives</h4>
+        </ng-template>
+        <p>Outside Department Electives (Max 2 allowed, you've completed <strong>{{ result.OutsideDept.NumOutsideDeptTakenCourses }}</strong>).</p>
+        <ng-container *ngIf="result.OutsideDept.CoursesCodesCanTakeOutside > 0">
+          <ng-container *ngIf="result.OutsideDept.AvailableOutside?.length; else noOutsideOptions">
+            <p>You may choose up to <strong>{{ result.OutsideDept.CoursesCodesCanTakeOutside }}</strong> elective(s) from other departments:</p>
+            <ul class="list-group list-group-flush">
+              <li *ngFor="let course of result.OutsideDept.AvailableOutside" class="list-group-item">
+                <i class="pi pi-globe text-secondary me-2"></i>{{ course }}
+              </li>
+            </ul>
+          </ng-container>
+          <ng-template #noOutsideOptions>
+            <p class="text-warning">No eligible outside-department electives available for this term.</p>
+          </ng-template>
+        </ng-container>
+        <ng-container *ngIf="result.OutsideDept.CoursesCodesCanTakeOutside === 0">
+          <p class="text-muted">You have already completed the maximum number of outside department electives.</p>
+        </ng-container>
+      </p-card>
+    </div>
+
+    <div class="col-md-6" *ngIf="result.remaining_requirements">
+      <p-card styleClass="shadow-sm">
+        <ng-template pTemplate="title">
+          <h4 class="text-dark mb-0">Remaining Distribution Requirements</h4>
+        </ng-template>
+        <ul class="list-group list-group-flush mt-2">
+          <li *ngFor="let category of getKeys(result.remaining_requirements)" class="list-group-item">
+            <i class="pi pi-list text-dark me-2"></i>{{ category }}: <strong>{{ result.remaining_requirements[category] }}</strong>
+          </li>
+        </ul>
+      </p-card>
+    </div>
+
+    <div class="col-md-6" *ngIf="result.IneligibleCourses && result.IneligibleCourses.length > 0">
+      <p-card styleClass="shadow-sm">
+        <ng-template pTemplate="title">
+          <h4 class="text-danger mb-0">Important Notes</h4>
+        </ng-template>
+        <p>You have remaining mandatory courses that you are not yet eligible for:</p>
+        <ul class="list-group list-group-flush">
+          <li *ngFor="let course of result.IneligibleCourses" class="list-group-item">
+            <i class="pi pi-exclamation-triangle text-danger me-2"></i>{{ course.course }}: 
+            <span class="text-danger">Missing prerequisites: {{ course.missingPrereqs }}</span>
+          </li>
+        </ul>
+      </p-card>
+    </div>
+    <div class="col-md-6" *ngIf="result.IneligibleCourses && result.IneligibleCourses.length === 0">
+      <p-card styleClass="shadow-sm">
+        <ng-template pTemplate="title">
+          <h4 class="text-success mb-0">Important Notes</h4>
+        </ng-template>
+        <p class="text-success">You are eligible for all remaining mandatory courses.</p>
+      </p-card>
+    </div>
+  </div>
+</div>
+<div *ngIf="!loading && !recommendationPlan" class="container py-5">
+  <p-card styleClass="shadow">
+    <h1 class="text-center text-danger">No recommendation data available.</h1>
+  </p-card>
+</div>

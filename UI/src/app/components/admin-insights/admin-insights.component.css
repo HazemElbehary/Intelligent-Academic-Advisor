@@ -1,0 +1,10 @@
+.insights-container {
+  background: #f8fafc;
+  min-height: 100vh;
+}
+.card {
+  border-radius: 1rem;
+}
+.table th, .table td {
+  vertical-align: middle;
+} 

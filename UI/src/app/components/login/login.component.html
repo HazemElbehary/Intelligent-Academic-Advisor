@@ -1,0 +1,68 @@
+<div class="flex justify-content-center align-items-center h-screen">
+  <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+    <p-card header="Login" [style]="{ width: '360px' }">
+      <!-- Role Selection -->
+      <div class="field mb-3">
+        <label for="role" class="mb-2 me-2">Login As</label>
+        <p-dropdown
+          formControlName="role"
+          [options]="roleOptions"
+          placeholder="Select your role"
+          class="w-full"
+          [showClear]="false"
+        ></p-dropdown>
+        <small
+          *ngIf="role.invalid && (role.dirty || role.touched)"
+          class="block p-error"
+        >
+          <div *ngIf="role.errors?.['required']">Role is required.</div>
+        </small>
+      </div>
+
+      <!-- FCAI ID (for both User and Admin) -->
+      <div class="field">
+        <label for="identifier">FCAI ID</label>
+        <input
+          type="text"
+          pInputText
+          formControlName="identifier"
+          class="w-full"
+          name="identifier"
+          placeholder="Type your FCAI ID"
+        />
+        <small
+          *ngIf="identifier.invalid && (identifier.dirty || identifier.touched)"
+          class="block p-error"
+        >
+          <div *ngIf="identifier.errors?.['required']">FCAI ID is required.</div>
+          <div *ngIf="selectedRole === 'user' && identifier.errors?.['fcaiid']">ID should be valid (202xxxxx)</div>
+        </small>
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          pInputText
+          formControlName="password"
+          class="w-full"
+          name="password"
+          placeholder="Type your password"
+        />
+        <small
+          *ngIf="password.invalid && (password.dirty || password.touched)"
+          class="block p-error"
+        >
+          <div *ngIf="password.errors?.['required']">Password is required.</div>
+        </small>
+      </div>
+      <p-button
+        label="SIGN IN"
+        styleClass="w-full"
+        [disabled]="loginForm.invalid"
+        type="submit"
+      ></p-button>
+      <div class="mt-2">Not a member? <a routerLink="/register">Register</a></div>
+    </p-card>
+  </form>
+</div>

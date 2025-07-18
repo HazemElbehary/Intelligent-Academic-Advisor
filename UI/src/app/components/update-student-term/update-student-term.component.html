@@ -1,0 +1,43 @@
+<div class="update-term-container">
+  <div class="card">
+    <h2>Update Student Term</h2>
+    <p class="description">Select the term you want to get its plan recommendation</p>
+    <form (ngSubmit)="updateTerm()" #termForm="ngForm" class="term-form">
+      <div class="form-group">
+        <label for="termId">Term</label>
+        <p-dropdown
+          id="termId"
+          name="termId"
+          [options]="terms"
+          placeholder="Select your term"
+          optionLabel="name"
+          optionValue="id"
+          [(ngModel)]="selectedTermId"
+          [showClear]="true"
+          [disabled]="loading"
+          [class.ng-invalid]="!selectedTermId && termForm.submitted"
+        ></p-dropdown>
+        <div *ngIf="!selectedTermId && termForm.submitted" class="error-message">
+          <small>Term is required</small>
+        </div>
+      </div>
+      <div class="form-actions">
+        <p-button
+          type="submit"
+          label="Update"
+          icon="pi pi-check"
+          [loading]="loading"
+          [disabled]="!selectedTermId || loading"
+          styleClass="p-button-primary"
+        ></p-button>
+        <p-button
+          type="button"
+          label="Cancel"
+          icon="pi pi-times"
+          styleClass="p-button-secondary"
+          (onClick)="router.navigate(['home'])"
+        ></p-button>
+      </div>
+    </form>
+  </div>
+</div>

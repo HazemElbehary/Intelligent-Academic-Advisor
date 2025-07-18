@@ -1,0 +1,46 @@
+<div class="add-department-container">
+  <div class="card">
+    <h2>Add Department</h2>
+    <p class="description">Please select your department to continue</p>
+    
+    <form [formGroup]="departmentForm" (ngSubmit)="onSubmit()" class="department-form">
+      <div class="form-group">
+        <label for="departmentId">Department</label>
+        <p-dropdown
+          id="departmentId"
+          formControlName="departmentId"
+          [options]="departmentOptions"
+          placeholder="Select your department"
+          optionLabel="label"
+          optionValue="value"
+          [showClear]="true"
+          [class.ng-invalid]="departmentId.invalid && departmentId.touched"
+          [class.ng-dirty]="departmentId.dirty"
+        ></p-dropdown>
+        
+        <div *ngIf="departmentId.invalid && departmentId.touched" class="error-message">
+          <small *ngIf="departmentId.errors?.['required']">Department is required</small>
+        </div>
+      </div>
+      
+      <div class="form-actions">
+        <p-button
+          type="submit"
+          label="Submit"
+          icon="pi pi-check"
+          [loading]="loading"
+          [disabled]="departmentForm.invalid || loading"
+          styleClass="p-button-primary"
+        ></p-button>
+        
+        <p-button
+          type="button"
+          label="Cancel"
+          icon="pi pi-times"
+          styleClass="p-button-secondary"
+          (onClick)="router.navigate(['home'])"
+        ></p-button>
+      </div>
+    </form>
+  </div>
+</div> 

@@ -1,0 +1,46 @@
+<div class="admin-search-container d-flex flex-column align-items-center justify-content-center min-vh-100 p-4">
+  <div class="card p-4 shadow" style="max-width: 800px; width: 100%;">
+    <!-- Header with Logout Button -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h3 class="mb-0">Search User Recommendation</h3>
+      <div class="d-flex gap-2">
+        <a routerLink="/admin-insights" class="btn btn-info">
+          <i class="pi pi-chart-bar"></i> Insights
+        </a>
+        <button class="btn btn-outline-danger" (click)="logout()">
+          <i class="pi pi-sign-out"></i> Logout
+        </button>
+      </div>
+    </div>
+    
+    <form (ngSubmit)="searchRecommendation()">
+      <div class="mb-3">
+        <label for="studentId" class="form-label">Student ID</label>
+        <input type="text" id="studentId" [(ngModel)]="studentId" name="studentId" class="form-control" placeholder="Enter Student ID" required />
+      </div>
+      <button type="submit" class="btn btn-primary w-100" [disabled]="loading">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+        {{ loading ? 'Searching...' : 'Search' }}
+      </button>
+    </form>
+
+    <!-- Loading State -->
+    <div *ngIf="loading" class="text-center mt-4">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="mt-2">Fetching recommendation plan...</p>
+    </div>
+  </div>
+
+  <!-- Recommendation Plan Results using existing component -->
+  <div *ngIf="showResults && recommendationPlan" class="w-100 mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h4>Recommendation Plan for Student ID: {{ studentId }}</h4>
+      <button class="btn btn-outline-secondary" (click)="showResults = false">
+        <i class="pi pi-times"></i> Close
+      </button>
+    </div>
+    <app-recommendation-plan [recommendationData]="recommendationPlan"></app-recommendation-plan>
+  </div>
+</div> 

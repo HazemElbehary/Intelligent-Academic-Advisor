@@ -1,0 +1,51 @@
+<div class="insights-container p-4">
+  <div class="card shadow-lg p-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="mb-0 text-primary"><i class="pi pi-chart-bar me-2"></i>Course Fail Insights</h2>
+      <div class="d-flex gap-2">
+        <a routerLink="/admin-search" class="btn btn-outline-primary">
+          <i class="pi pi-home"></i> Admin Home
+        </a>
+      </div>
+      <span *ngIf="loading" class="spinner-border text-primary"></span>
+    </div>
+    <ng-container *ngIf="coursesWithFails.length > 0; else noData">
+      <table class="table table-hover align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Course</th>
+            <th class="text-center">Number of Fails</th>
+            <th class="text-center">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let course of coursesWithFails">
+            <td>
+              <i class="pi pi-book text-secondary me-2"></i>
+              <span class="fw-bold">{{ course.CourseName }}</span>
+            </td>
+            <td class="text-center">
+              <span [ngClass]="{
+                'badge bg-danger': course.NumberOfFails > 10,
+                'badge bg-warning text-dark': course.NumberOfFails > 3 && course.NumberOfFails <= 10,
+                'badge bg-info text-dark': course.NumberOfFails <= 3
+              }">
+                {{ course.NumberOfFails }}
+              </span>
+            </td>
+            <td class="text-center">
+              <i class="pi pi-exclamation-triangle text-danger" *ngIf="course.NumberOfFails > 10"></i>
+              <i class="pi pi-info-circle text-warning" *ngIf="course.NumberOfFails > 3 && course.NumberOfFails <= 10"></i>
+              <i class="pi pi-check-circle text-success" *ngIf="course.NumberOfFails <= 3"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+    <ng-template #noData>
+      <div class="alert alert-success text-center">
+        <i class="pi pi-check-circle me-2"></i>All courses have zero fails!
+      </div>
+    </ng-template>
+  </div>
+</div> 

@@ -1,0 +1,76 @@
+<div class="d-flex flex-column align-items-center justify-content-center min-vh-100 p-4 bg-light">
+  <div class="w-100" style="max-width: 900px; position: relative;">
+    <p-card styleClass="shadow">
+      <ng-template pTemplate="title">
+        <div class="text-center">
+          <h2 class="h2 fw-bold text-dark">Select Completed Courses</h2>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="subtitle">
+        <div class="text-center">
+          <p class="text-secondary">
+            Please check the courses you have completed and select the grade you received for each.
+          </p>
+        </div>
+      </ng-template>
+
+      <!-- Sticky Search input -->
+      <div class="position-sticky rounded" style="top: 0; z-index: 100; background: #f8fafc; padding: 0.5rem 1rem;">
+        <div class="d-flex justify-content-between align-items-center">
+          <button pButton type="button" icon="pi pi-home" label="Go to Home" 
+                  class="btn btn-outline-primary px-3 rounded-pill" (click)="goToHome()">
+          </button>
+          <input type="text" [(ngModel)]="searchTerm" placeholder="Search..."
+            class="form-control form-control-lg w-auto" style="max-width: 350px; background: #fff; color: #222; border: 2px solid #6c757d;" />
+        </div>
+      </div>
+
+      <h5 class="fw-bold text-primary mb-3 mt-4">Available Courses</h5>
+      <div *ngIf="filteredCourses.length > 0; else noCourses"
+        class="course-list-container mt-4 border-top border-secondary" style="background: #fff;">
+        <div *ngFor="let course of filteredCourses; let i = index"
+          class="d-flex align-items-center justify-content-between p-3 bg-white course-row"
+          [ngClass]="{'bg-info bg-opacity-10': selectedCodes.includes(course.Code)}">
+
+          <!-- Left side: Checkbox and course name -->
+          <div class="d-flex align-items-center">
+            <div class="form-check form-check-lg">
+              <!-- <input class="form-check-input" type="checkbox" [(ngModel)]="selectedCodes" [value]="course.Code" id="course-{{course.Code}}"> -->
+              <input class="form-check-input" type="checkbox" [checked]="selectedCodes.includes(course.Code)" (change)="onCourseChecked($event, course.Code)" id="course-{{course.Code}}"/>
+              <label class="form-check-label ms-2 fw-bold" [for]="'course-' + course.Code">
+                {{ course.Name }} <span class="text-secondary">({{ course.Code }})</span>
+              </label>
+            </div>
+          </div>
+          <div class="ms-3" style="min-width: 180px;">
+            <label class="form-label mb-0" [for]="'grade-' + i">Grade</label>
+            <p-dropdown [options]="gradeOptions"
+              [(ngModel)]="selectedCoursesGrades[course.Code]"
+              placeholder="Select Grade"
+              [style]="{'width': '100%'}"
+              [disabled]="!selectedCodes.includes(course.Code)"
+              [showClear]="true"
+              appendTo="body" [inputId]="'grade-' + i">
+            </p-dropdown>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #noCourses>
+        <div class="text-center p-4 mt-4 bg-warning bg-opacity-25 border border-warning rounded">
+          <p class="fs-5 text-warning">No courses available to select at the moment.</p>
+        </div>
+      </ng-template>
+
+      <ng-template pTemplate="footer">
+        <div class="d-flex justify-content-between pt-4 mt-4 border-top border-secondary">
+          <button (click)="skipNow()" pButton type="button" label="Skip Now" class="btn btn-primary px-4"></button>
+          <button pButton type="button" label="Submit" icon="pi pi-check" class="btn btn-success px-4"
+            [disabled]="selectedCodes.length === 0 || isSubmitting" (click)="onSubmit()">
+            <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm ms-2"></span>
+          </button>
+        </div>
+      </ng-template>
+    </p-card>
+  </div>
+</div>

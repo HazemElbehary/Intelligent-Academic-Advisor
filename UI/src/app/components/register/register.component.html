@@ -1,0 +1,221 @@
+<div class="flex flex-col justify-content-center align-items-center h-full p-4">
+  <div class="w-full max-w-lg">
+    <!-- Progress Bar -->
+    <div class="mb-6">
+      <div class="flex justify-content-between align-items-center mb-3">
+        <span class="text-lg font-semibold">Registration Progress</span>
+        <span class="text-sm text-gray-600">{{ currentStep }} of {{ totalSteps }}</span>
+      </div>
+      <div class="w-full bg-gray-200 rounded-full h-2">
+        <div class="bg-blue-600 h-2 rounded-full transition-all duration-300" 
+             [style.width]="(currentStep / totalSteps) * 100 + '%'"></div>
+      </div>
+    </div>
+
+  <form [formGroup]="registerForm" (ngSubmit)="submitDetails()">
+      <p-card [style]="{ width: '100%' }" styleClass="compact-card">
+        
+        <!-- Step 1: Personal Information -->
+      <div *ngIf="currentStep === 1">
+          <div class="mb-4">
+            <h2 class="text-xl font-bold text-gray-800 mb-2">Personal Information</h2>
+            <p class="text-gray-600">Please provide your basic account information</p>
+          </div>
+
+      <!-- User Name -->
+      <div class="field mb-4">
+            <label for="userName" class="block text-sm font-medium text-gray-700 mb-2">User Name</label>
+        <input
+          type="text"
+          pInputText
+          formControlName="userName"
+              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          name="userName"
+              placeholder="Enter your username"
+        />
+        <small
+          *ngIf="userName.invalid && (userName.dirty || userName.touched)"
+              class="block text-red-600 text-sm mt-1"
+        >
+          <div *ngIf="userName.errors?.['required']">User Name is required.</div>
+          <div *ngIf="userName.errors?.['pattern']">
+            User Name can only contain letters, numbers, and underscores.
+          </div>
+        </small>
+      </div>
+
+      <!-- FCAIID -->
+      <div class="field mb-4">
+            <label for="fcaiid" class="block text-sm font-medium text-gray-700 mb-2">Cairo University ID</label>
+        <input
+          type="text"
+          pInputText
+          formControlName="fcaiid"
+              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          name="fcaiid"
+              placeholder="Enter your Cairo University ID (e.g., 20212345)"
+        />
+        <small
+          *ngIf="fcaiid.invalid && (fcaiid.dirty || fcaiid.touched)"
+              class="block text-red-600 text-sm mt-1"
+        >
+          <div *ngIf="fcaiid.errors?.['required']">ID is required.</div>
+              <div *ngIf="fcaiid.errors?.['pattern']">ID should be valid (202 followed by 5 digits).</div>
+        </small>
+      </div>
+
+      <!-- Password -->
+      <div class="field mb-4">
+            <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+        <input
+          type="password"
+          pInputText
+          formControlName="password"
+              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          name="password"
+              placeholder="Enter your password"
+        />
+            <small *ngIf="password.invalid && (password.dirty || password.touched)" class="block text-red-600 text-sm mt-1">
+          <div *ngIf="password.errors?.['required']">Password is required.</div>
+          <div *ngIf="password.errors?.['minlength']">Password must be at least 8 characters long.</div>
+          <div *ngIf="password.errors?.['uppercase']">Password must contain at least one uppercase letter (A-Z).</div>
+          <div *ngIf="password.errors?.['lowercase']">Password must contain at least one lowercase letter (a-z).</div>
+          <div *ngIf="password.errors?.['digit']">Password must contain at least one digit (0-9).</div>
+          <div *ngIf="password.errors?.['special']">Password must contain at least one special character (&#64;, $, !, %, *, ?, &).</div>
+        </small>
+      </div>
+
+      <!-- Confirmed Password -->
+      <div class="field mb-6">
+            <label for="confirmPassword" class="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
+        <input
+          type="password"
+          pInputText
+          formControlName="confirmPassword"
+              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          name="confirmPassword"
+              placeholder="Confirm your password"
+        />
+        <small
+          *ngIf="
+            confirmPassword.invalid &&
+            (confirmPassword.dirty || confirmPassword.touched)
+          "
+              class="block text-red-600 text-sm mt-1"
+        >
+          <div *ngIf="confirmPassword.errors?.['required']">
+            Confirm the password
+          </div>
+        </small>
+        <small
+              class="block text-red-600 text-sm mt-1"
+          *ngIf="registerForm.errors?.['passwordMismatch'] && confirmPassword.valid && password.valid"
+        >
+          Password should match
+        </small>
+      </div>
+
+          <!-- Navigation Buttons for Step 1 -->
+          <div class="flex justify-end">
+            <p-button
+              label="Next"
+              icon="pi pi-arrow-right"
+              [disabled]="!canProceedToNext()"
+              (onClick)="nextStep()"
+              styleClass="p-button-primary"
+            ></p-button>
+          </div>
+        </div>
+
+        <!-- Step 2: Academic Information -->
+        <div *ngIf="currentStep === 2">
+          <div class="mb-4">
+            <h2 class="text-xl font-bold text-gray-800 mb-2">Academic Information</h2>
+            <p class="text-gray-600">Please provide your academic details</p>
+          </div>
+
+      <!-- University -->
+          <div class="field mb-4">
+            <label for="UniversityId" class="block text-sm font-medium text-gray-700 mb-2">University</label>
+        <p-dropdown
+          [options]="UniversityOptions"
+          formControlName="UniversityId"
+          class="w-full"
+          placeholder="Select your university"
+              [styleClass]="'w-full'"
+        ></p-dropdown>
+        <small
+          *ngIf="
+            UniversityId.invalid &&
+            (UniversityId.dirty || UniversityId.touched)
+          "
+              class="block text-red-600 text-sm mt-1"
+        >
+          <div *ngIf="UniversityId.errors?.['required']">
+            University is required.
+          </div>
+        </small>
+      </div>
+      
+      <!-- Department -->
+      <div class="field mb-4">
+            <label for="DepartmentId" class="block text-sm font-medium text-gray-700 mb-2">Department</label>
+        <p-dropdown
+          [options]="DepartmentOptions"
+          formControlName="DepartmentId"
+          class="w-full"
+          placeholder="Select your department"
+          [styleClass]="'w-full'"
+          [disabled]="!isGeneralCairoUniversitySelected()"
+          [showClear]="true"
+        ></p-dropdown>
+      </div>
+
+      <!-- User Term -->
+          <div class="field mb-6">
+            <label for="UserTerm" class="block text-sm font-medium text-gray-700 mb-2">Academic Term</label>
+        <p-dropdown
+          [options]="UserTermOptions"
+          formControlName="UserTerm"
+          class="w-full"
+          placeholder="Select your term"
+              [styleClass]="'w-full'"
+        ></p-dropdown>
+        <small
+          *ngIf="UserTerm.invalid && (UserTerm.dirty || UserTerm.touched)"
+              class="block text-red-600 text-sm mt-1"
+        >
+          <div *ngIf="UserTerm.errors?.['required']">
+        User Term is required.
+          </div>
+        </small>
+            <p class="text-sm text-gray-500 mt-1">Select the term you want to get its plan recommendation</p>
+      </div>
+
+          <!-- Navigation Buttons for Step 2 -->
+          <div class="flex justify-content-between">
+            <p-button
+              label="Previous"
+              icon="pi pi-arrow-left"
+              (onClick)="previousStep()"
+              styleClass="p-button-secondary"
+            ></p-button>
+      <p-button
+        label="Register"
+              icon="pi pi-check"
+        [disabled]="registerForm.invalid"
+        type="submit"
+              styleClass="p-button-success"
+      ></p-button>
+          </div>
+        </div>
+
+        <!-- Login Link -->
+        <div class="mt-4 text-center">
+          <span class="text-gray-600">Already a member? </span>
+          <a routerLink="/login" class="text-blue-600 hover:text-blue-800 font-medium">Login</a>
+        </div>
+    </p-card>
+  </form>
+  </div>
+</div>

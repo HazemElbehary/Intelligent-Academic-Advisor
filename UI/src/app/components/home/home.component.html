@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-2" style="margin-top: 0;">
+    <div class="container-fluid">
+      <!-- Home Page -->
+      <a class="navbar-brand" href="/home">FCAI Academic Advisor</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarContent"
+        aria-controls="navbarContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          
+          <!-- ChatBot Link -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="chat-bot" routerLinkActive="active">
+              ChatBot
+            </a>
+          </li>
+          
+          <!-- Add New Courses -->
+          <li class="nav-item">
+            <a class="nav-link" (click)="navigateToAddCourse()" style="cursor: pointer;">
+              Add New Courses
+            </a>
+          </li>
+
+          <!-- Add Department -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/add-department" routerLinkActive="active">
+              Add Department
+            </a>
+          </li>
+
+          <!-- Update Student Term -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/update-student-term" routerLinkActive="active">
+              Update Student Term
+            </a>
+          </li>
+
+          <!-- Student's GPA -->
+          <li class="nav-item d-flex align-items-center">
+            <span class="mb-0">GPA: {{ gpa }}</span>
+          </li>
+        </ul>
+        <!-- LogOut -->
+        <div class="d-flex ms-auto">
+          <button class="btn btn-outline-danger" (click)="logOut()">Sign out</button>
+        </div>
+      </div>
+    </div>
+</nav>  
+<router-outlet></router-outlet>

@@ -1,0 +1,61 @@
+<!-- chatbot.component.html -->
+<div class="chatbot-container">
+  <!-- Header -->
+  <header class="chatbot-header">
+    <h2>How can I help you from university Bylaws?</h2>
+  </header>
+
+  <!-- Chat history -->
+  <div class="chat-history" #chatHistoryDiv>
+    <div *ngFor="let chat of chatHistory" [ngClass]="chat.type === 'user' ? 'user' : 'bot'">
+      <div class="chat-bubble">
+        <img *ngIf="chat.type === 'bot'" src="assets/bot.png" class="avatar" alt="Bot" />
+        <span>{{ chat.message }}</span>
+      </div>
+    </div>
+    
+    <!-- Thinking Animation -->
+    <div *ngIf="isThinking" class="bot bot-thinking">
+      <div class="chat-bubble thinking-bubble">
+        <img src="assets/bot.png" class="avatar" alt="Bot" />
+        <div class="thinking-content">
+          <div class="thinking-icon">
+            <i class="pi pi-brain"></i>
+          </div>
+          <div class="thinking-text">
+            <span>Thinking</span>
+            <div class="thinking-dots">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div *ngIf="isBotTyping" class="bot bot-typing">
+      <div class="chat-bubble">
+        <img src="assets/bot.png" class="avatar" alt="Bot" />
+        <span class="typing-dots">
+          <span>.</span><span>.</span><span>.</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Input area -->
+  <form (ngSubmit)="submitQuery()" class="chat-input-area">
+    <input
+      [(ngModel)]="userQuery"
+      name="userQuery"
+      placeholder="Type your message..."
+      autocomplete="off"
+      [disabled]="isThinking"
+    />
+    <button type="submit" [disabled]="!userQuery.trim() || isThinking">
+      <i class="pi pi-send"></i>
+    </button>
+  </form>
+</div>
+  
